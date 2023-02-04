@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Whatsapp Analyzer</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p>Please upload file here</p>
+    <input id="fileupload" type="file" name="fileupload" />
+    <button id="upload-button" onclick="uploadFile()"> Upload </button>
+
+    <script>
+    async function uploadFile() {
+        let formData = new FormData();           
+        formData.append("file", fileupload.files[0]);
+        formData.append("chatName", fileupload.files[0].name);
+
+        await fetch('/analysis', {
+          method: "POST", 
+          body: formData
+        })
+        .then(response => response.blob())
+        .then(response => {
+            const blob = new Blob([response], {type: 'application/pdf'});
+            const downloadUrl = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = downloadUrl;
+            a.download = fileupload.files[0].name + ".pdf";
+            document.body.appendChild(a);
+            a.click();
+        })
+    }
+    </script>
+</body>
+</html>

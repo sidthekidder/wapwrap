@@ -1,0 +1,15 @@
+version: '2'
+services:
+    wapwrap:
+        container_name: wapwrap
+        build:
+            context: wapwrap
+            dockerfile: Dockerfile
+        image: wapwrap:latest
+        ports:
+            - 8080:8080
+    wapwrap-sentimentservice:
+        container_name: wapwrap-sentimentservice
+        image: wapwrap-sentimentservice:nzzy43uyy2tiyhqa
+        ports:
+            - 3000:3000
