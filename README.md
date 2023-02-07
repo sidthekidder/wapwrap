@@ -8,6 +8,9 @@ See the summary of your whatsapp history with any contact or group conversation.
 
 ## Installation
 ```
+# need to have docker, kubectl and below python packages
+pip install bentoml pandas transformers torch wordcloud
+
 # build docker image
 # replace the already existing docker image tags in wapwrap-deployment.yaml and docker-compose.yml with the newly generated tags
 bentoml containerize wapwrap-sentimentservice:latest
