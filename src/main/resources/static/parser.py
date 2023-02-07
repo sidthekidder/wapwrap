@@ -91,6 +91,7 @@ def parse_messages(files, infer_datetime):
         participants = set()
         conversation_data = []
         text = None
+        f_path = "/usr/local/resources/static/" + f_path.strip("\n")
         if infer_datetime:
             regex_message = infer_datetime_regex(f_path)
         num_lines = sum(1 for _ in open(f_path, 'r', encoding="utf8"))
